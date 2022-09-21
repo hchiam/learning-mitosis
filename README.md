@@ -12,7 +12,7 @@ https://github.com/BuilderIO/mitosis
 npm install @builder.io/mitosis-cli @builder.io/mitosis
 ```
 
-then set up mitosis.config.js:
+then set up mitosis.config.js to specify the target output frameworks:
 
 ```js
 module.exports = {
@@ -20,3 +20,22 @@ module.exports = {
   targets: ["vue3", "solid", "svelte", "react"],
 };
 ```
+
+and maybe tsconfig.json:
+
+```json
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "@builder.io/mitosis"
+  }
+}
+```
+
+and then finally to generate code for the target frameworks:
+
+```sh
+npm exec mitosis build
+```
+
+And finally use the files in the `/output` folder.
